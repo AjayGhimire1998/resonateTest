@@ -1,0 +1,38 @@
+:root{
+    color: white;
+}
+
+@mixin fr() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin fc() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin center() {
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin for-phone-only {
+  @media (max-width: 650px) {
+    @content;
+  }
+}
+
+@mixin for-super-small-phone-only {
+  @media (max-width: 460px) {
+    @content;
+  }
+}
+.app-container {
+  @include fc();
+  @include center();
+  @include for-phone-only(){
+    max-width: 100%;
+  }
+}
+

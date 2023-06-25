@@ -1,0 +1,67 @@
+@import "./App.scss";
+.menu-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  width: 100%;
+  background-color: #1e1e1e;
+
+  @include for-super-small-phone-only(){
+    width: 100%;
+  }
+
+  .logo {
+    color: white;
+    margin-left: 10px;
+    // font-size: large;
+    font-size: 3vh;
+    cursor: pointer;
+    @include for-super-small-phone-only(){
+      font-size: 2.5vh;
+    }
+  
+  }
+
+  // .menus {
+  //   // @include fr();
+  //   // justify-content: space-between;
+
+  //   display: flex;
+  //   flex: 1;
+  //   // padding: 0 0 0 40px;
+  //   margin-left: 30px;
+  //   gap:10px;
+    
+  //   a{
+  //     color: white;
+  //     text-decoration: none;
+  //   }
+  //   @include for-phone-only() {
+  //     display: none;
+  //   }
+  // }
+  .search-bar {
+    @include fr();
+    @include center();
+    padding: 2px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-right: 10px;
+    svg {
+      height: 30px;
+      width: 30px;
+      fill: white;
+    }
+    input {
+      padding: 20px;
+      width: 200px;
+      border: none;
+      outline: none;
+      @include for-phone-only{
+        width: 150px;
+      }
+    }
+  }
+}
