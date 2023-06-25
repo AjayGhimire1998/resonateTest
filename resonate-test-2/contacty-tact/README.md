@@ -24,12 +24,15 @@ To get a local copy of the project up and running, follow these steps:
    ```bash
    git clone <repository-url>
 
-## Install the dependencies:
-cd contact-app
-npm install
+2.  Install the dependencies:
 
-## Start the development server:
-npm start
+    ```bash
+    cd contact-app
+    npm install
 
-## Open http://localhost:3000 in your browser to view the app.
+3. Start the development server:
+    ```bash
+    npm start
+
+3. Open http://localhost:3000 in your browser to view the app.
 
