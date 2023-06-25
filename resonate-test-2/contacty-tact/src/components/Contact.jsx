@@ -1,3 +1,9 @@
+/**
+ * The Contact function is a React component that renders a contact card with personal and work
+ * details, including an avatar.
+ * @returns The `Contact` component is being returned, which renders the contact information of a user
+ * including their name, avatar, phone number, email, address, and work details.
+ */
 import React from "react";
 import "./contact.scss";
 
@@ -51,7 +57,7 @@ function Contact({ contact, avatar }) {
           </div>
         </div>
         <div className="divider">
-          
+
         </div>
         <div className="company">
           <div className="title">

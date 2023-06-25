@@ -1,3 +1,9 @@
+/**
+ * The `App` function fetches contact data from an API, filters it based on user input, and renders a
+ * list of `Contact` components.
+ * @returns The `App` component is being returned, which contains a search bar and a list of `Contact`
+ * components.
+ */
 import { useEffect, useState } from "react";
 import Contact from "./components/Contact";
 
@@ -5,6 +11,7 @@ import "./App.scss";
 import "./menu.scss";
 
 function App() {
+  /* These lines of code are initializing state variables using the `useState` hook. */
   const [contactData, setContactData] = useState([]);
   const [query, setQuery] = useState("");
   const [filteredList, setFilteredList] = useState([]);
@@ -21,6 +28,10 @@ function App() {
     "Buster",
   ];
 
+/**
+ * This function fetches contact data from a specified API and sets it as both the filtered and
+ * unfiltered contact data.
+ */
   const fetchContacts = () => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => {
@@ -32,12 +43,21 @@ function App() {
       });
   };
 
+/* `useEffect(() => { fetchContacts(); }, []);` is a hook that is used to perform side effects in
+functional components. In this case, it is used to fetch contact data from an API when the component
+mounts for the first time. The empty array `[]` passed as the second argument to `useEffect` ensures
+that the effect is only run once when the component mounts, and not on subsequent re-renders. */
   useEffect(() => {
     fetchContacts();
   }, []);
 
-  console.log(contactData);
+  // console.log(contactData);
 
+ /* `const contacts` is creating an array of `Contact` components by mapping over the `filteredList`
+ array. For each `contact` object in `filteredList`, a `Contact` component is created with the
+ `contact` object passed as a prop, along with a unique `key` and an `avatar` prop that is set to a
+ specific name from the `avatarNamesList` array based on the `id` of the `contact` object. The
+ resulting array of `Contact` components is stored in the `contacts` variable. */
   const contacts = filteredList.map((contact) => {
     return (
       <Contact
@@ -48,10 +68,19 @@ function App() {
     );
   });
 
+ /**
+  * The function `handleChange` sets the state of `query` to the value of the event target.
+  * @param e - The parameter "e" is an event object that is passed to the function when an event
+  * occurs, such as a change in the input field. It contains information about the event, such as the
+  * target element (in this case, the input field) and the value of the input field.
+  */
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
 
+/* `useEffect(() => {...})` is a hook that is used to perform side effects in functional components. In
+this case, it is used to filter the `contactData` array based on the value of the `query` state
+variable. */
   useEffect(() => {
     console.log(query);
     let filterList = contactData.filter((item) =>
