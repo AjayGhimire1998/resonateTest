@@ -13,7 +13,8 @@ function generateShortCode(storeId, transactionId) {
   charMap["29"] = "c";
   charMap["30"] = "d";
   charMap["31"] = "e";
-//   console.log(charMap);
+  //   console.log(charMap);
+  var charMap2 = charMap;
 
   /**generating short code for storeId */
   const storeIdString = storeId.toString(); //storeId converted to string
@@ -36,7 +37,7 @@ function generateShortCode(storeId, transactionId) {
     }
   }
   const codedStoreId = codedStoreId1 + codedStoreId2; // code for storeId
-//   console.log(codedStoreId);
+  //   console.log(codedStoreId);
 
   /** generating shortcode for date */
   //getting today's date in DDMMYY format:
@@ -45,7 +46,7 @@ function generateShortCode(storeId, transactionId) {
   const month = (today.getMonth() + 1).toString();
   const day = today.getDate().toString();
   const codedDate = charMap[day] + charMap[month] + charMap[year]; // code for date
-//   console.log(codedDate);
+  //   console.log(codedDate);
 
   /**generating shortcode for transactionId */
   const transactionIdString = transactionId.toString(); // transactionId converted to string
@@ -58,7 +59,7 @@ function generateShortCode(storeId, transactionId) {
       codedTransactionId += charMap[transactionIdString.charAt(j)]; // concatenating transactionId code for each of the character in the id with its corresponsing charMap value
     }
   }
-//   console.log(codedTransactionId);
+  //   console.log(codedTransactionId);
 
   /** generating complete shortcode */
   const shortCode = codedStoreId + codedDate + codedTransactionId; // concatenating codes for storeId, current date and transactionId to generate a 9 character long shortcode
@@ -70,6 +71,7 @@ generateShortCode(172, 2334);
 
 // TODO: Modify this function
 function decodeShortCode(shortCode) {
+  
   // Logic goes here
   /**creating a map object to hold the keys and values */
   const intMap = new Map(); //map object with keys ranging from "A" to "Z" and corresponding values from "1" to "26";
@@ -84,7 +86,7 @@ function decodeShortCode(shortCode) {
   intMap["c"] = "29";
   intMap["d"] = "30";
   intMap["e"] = "31";
-//   console.log(intMap);
+  //   console.log(intMap);
 
   /** decoding the shortCode into storeId */
   const codedStoreId = shortCode.substring(0, 2);
@@ -108,17 +110,17 @@ function decodeShortCode(shortCode) {
   const shopDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 
   /** decoding shortCode into transactionId */
-  const codedTransactionId = shortCode.substring(5,10);
-//   console.log(codedTransactionId);
+  const codedTransactionId = shortCode.substring(5, 10);
+  //   console.log(codedTransactionId);
   let transactionId = "";
-  if(codedTransactionId === "J000"){
+  if (codedTransactionId === "J000") {
     transactionId = 10000;
   } else {
-    for(let j = 0; j < codedTransactionId.length; j++){
-        transactionId += intMap[codedTransactionId.charAt(j)];
+    for (let j = 0; j < codedTransactionId.length; j++) {
+      transactionId += intMap[codedTransactionId.charAt(j)];
     }
   }
-//   console.log(transactionId);
+  //   console.log(transactionId);
   return {
     storeId: storeId, // store id goes here,
     shopDate: shopDate, // the date the customer shopped,
@@ -169,3 +171,5 @@ function AddTestResult(testName, testResult) {
       "</span></div>"
   );
 }
+
+console.log(charMap2);
